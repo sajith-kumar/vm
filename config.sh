@@ -6,6 +6,11 @@
 # Check the if vm is enabled
 ./check_virtualization.sh
 
+
+# Disable Network Manager
+sudo systemctl disable  NetworkManager
+
+
 # Enaable livertd daemon
 ./check_and_start_libvirtd.sh
 
@@ -13,10 +18,8 @@
 ./add_localUser_kvm_groups.sh
 
 # Create Bridge using Networkd
-# 1. Disable Network Manager
-sudo systemctl disable  NetworkManager
+# Copy files to /etc/systemd/network
 
-# 2. Copy files to /etc/systemd/network
 sudo cp {*.network,*.netdev} /etc/systemd/network
 sudo systemctl restart systemd-networkd
 
