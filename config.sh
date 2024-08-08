@@ -13,10 +13,12 @@
 ./add_localUser_kvm_groups.sh
 
 # Create Bridge using Networkd
+# 1. Disable Network Manager
+sudo systemctl disable  NetworkManager
 
-# 1. Copy files to /etc/systemd/network
+# 2. Copy files to /etc/systemd/network
 sudo cp {*.network,*.netdev} /etc/systemd/network
-sudo systemctl restart libvirtd
+sudo systemctl restart systemd-networkd
 
 # Create VM using virt-install
 ./virt.sh
