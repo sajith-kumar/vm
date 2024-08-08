@@ -1,5 +1,5 @@
 [Match]
 Name=en*
 
-[Netword]
+[Network]
 Bridge=br0
